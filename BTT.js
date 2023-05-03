@@ -18,17 +18,17 @@
   button.classList.add('GO_TO_TOP_button');
 
   // 设置按钮样式
-  button.style.position = 'fixed';
-  button.style.bottom = '10px';
-  button.style.right = '15px';
-  button.style.zIndex = '9999';
-  button.style.width = '35px';
-  button.style.height = '35px';
-  button.style.borderRadius = '50%';
-  button.style.fontSize = '24px';
-  button.style.opacity = '0';
-  button.style.transition = 'opacity 0.3s ease-in-out, transform 0.3s ease-in-out';
-  button.style.border = '2px solid transparent';
+  button.style.position = 'fixed'; // 设置按钮的定位方式为固定定位
+  button.style.bottom = '25px'; // 设置按钮距离底部的距离
+  button.style.right = '10px'; // 设置按钮距离右侧的距离
+  button.style.zIndex = '999999'; // 设置按钮的层级
+  button.style.width = '45px'; // 设置按钮的宽度
+  button.style.height = '45px'; // 设置按钮的高度
+  button.style.borderRadius = '50%'; // 设置按钮为圆形
+  button.style.fontSize = '24px'; // 设置按钮字体大小
+  button.style.opacity = '0'; // 设置按钮的透明度为 0
+  button.style.transition = 'opacity 0.3s ease-in-out, transform 0.3s ease-in-out'; // 设置按钮的过渡效果
+  button.style.border = '2px solid transparent'; // 设置按钮的边框宽度和颜色
 
   // 将按钮添加到页面中
   document.body.appendChild(button);
@@ -36,43 +36,12 @@
   let timeoutId; // 定义一个变量用于存储 setTimeout 的返回值
   let isLongPressed = false; // 定义一个变量用于标记是否长按触发
 
-  // 当鼠标按下时
-  button.addEventListener('mousedown', () => {
-    timeoutId = setTimeout(() => {
-      isLongPressed = true;
-      goToBottom(); // 长按时触发回到底部操作
-      button.style.transform = 'scale(1.2)'; // 按钮缩放效果
-      setTimeout(() => {
-        button.style.transform = 'scale(1)';
-      }, 300);
-    }, 500);
-  });
-
-  // 当鼠标松开时
-  button.addEventListener('mouseup', () => {
-    clearTimeout(timeoutId); // 清除之前的定时器
-
-    if (!isLongPressed) {
-      goToTop(); // 点击时触发回到顶部操作
-      button.style.transform = 'scale(1.2)'; // 按钮缩放效果
-      setTimeout(() => {
-        button.style.transform = 'scale(1)';
-      }, 300);
-    } else {
-      isLongPressed = false;
-      button.style.transform = 'scale(1.2)'; // 按钮缩放效果
-      setTimeout(() => {
-        button.style.transform = 'scale(1)';
-      }, 300);
-    }
-  });
-
   // 当触摸屏幕时
   button.addEventListener('touchstart', () => {
     timeoutId = setTimeout(() => {
       isLongPressed = true;
       goToBottom(); // 长按时触发回到底部操作
-      button.style.transform = 'scale(1.2)'; // 按钮缩放效果
+      button.style.transform = 'scale(1.4)'; // 按钮缩放效果
       setTimeout(() => {
         button.style.transform = 'scale(1)';
       }, 300);
@@ -85,13 +54,13 @@
 
     if (!isLongPressed) {
       goToTop(); // 点击时触发回到顶部操作
-      button.style.transform = 'scale(1.2)'; // 按钮缩放效果
+      button.style.transform = 'scale(1.4)'; // 按钮缩放效果
       setTimeout(() => {
         button.style.transform = 'scale(1)';
       }, 300);
     } else {
       isLongPressed = false;
-      button.style.transform = 'scale(1.2)'; // 按钮缩放效果
+      button.style.transform = 'scale(1.4)'; // 按钮缩放效果
       setTimeout(() => {
         button.style.transform = 'scale(1)';
       }, 300);
@@ -132,14 +101,14 @@
 
     if (!isScrolling) {
       isScrolling = true;
-      button.style.opacity = '1';
+      button.style.opacity = '1'; // 显示按钮
     }
 
-    // 如果滚动静止超过 3.5 秒，则隐藏按钮
+    // 如果滚动静止超过 2.5 秒，则隐藏按钮
     timeoutId = setTimeout(() => {
-      button.style.opacity = '0';
+      button.style.opacity = '0'; // 隐藏按钮
       isScrolling = false;
-    }, 3500);
+    }, 2500);
   });
 
   // 计算两个颜色之间的对比度
